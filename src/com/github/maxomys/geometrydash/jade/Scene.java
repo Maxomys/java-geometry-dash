@@ -18,7 +18,6 @@ public abstract class Scene {
         this.camera = new Camera(new Vector2());
         this.gameObjects = new ArrayList<>();
         this.renderer = new Renderer(this.camera);
-        init();
     }
 
     public abstract void init();
