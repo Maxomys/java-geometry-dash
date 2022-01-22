@@ -34,4 +34,9 @@ public class Ground extends Component {
 
     }
 
+    @Override
+    public Component copy() {
+        return null;
+    }
+
 }

@@ -24,4 +24,9 @@ public class RigidBody extends Component {
         }
     }
 
+    @Override
+    public Component copy() {
+        return null;
+    }
+
 }

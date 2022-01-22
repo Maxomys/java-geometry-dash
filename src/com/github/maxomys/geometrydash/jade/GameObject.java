@@ -1,5 +1,6 @@
 package com.github.maxomys.geometrydash.jade;
 
+import com.github.maxomys.geometrydash.components.SnapToGrid;
 import com.github.maxomys.geometrydash.dataStructure.Transform;
 
 import java.awt.*;
@@ -36,6 +37,27 @@ public class GameObject {
     public void addComponent(Component component) {
         components.add(component);
         component.gameObject = this;
+    }
+
+    public <T extends Component> void removeComponent(Class<T> componentClass) {
+        for (Component c : components) {
+            if (componentClass.isAssignableFrom(c.getClass())) {
+                components.remove(c);
+                return;
+            }
+        }
+    }
+
+    public GameObject copy() {
+        GameObject newGameObject = new GameObject("Generated", transform.copy());
+        for (Component c : components) {
+            Component copy = c.copy();
+            if (copy != null) {
+                newGameObject.addComponent(c.copy());
+            }
+        }
+
+        return newGameObject;
     }
 
     public void update(double dt) {

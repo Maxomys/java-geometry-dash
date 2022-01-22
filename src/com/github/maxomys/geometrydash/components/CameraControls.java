@@ -31,4 +31,9 @@ public class CameraControls extends Component {
         prevMy = window.mouseListener.y + window.mouseListener.dy;
     }
 
+    @Override
+    public Component copy() {
+        return null;
+    }
+
 }

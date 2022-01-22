@@ -53,4 +53,9 @@ public class Player extends Component {
         g2.drawImage(layerThree.image, transform, null);
     }
 
+    @Override
+    public Component copy() {
+        return null;
+    }
+
 }

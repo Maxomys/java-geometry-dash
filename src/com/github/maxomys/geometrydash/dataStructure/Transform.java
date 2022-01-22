@@ -14,6 +14,14 @@ public class Transform {
         this.rotation = 0.0f;
     }
 
+    public Transform copy() {
+        Transform transform = new Transform(this.position.copy());
+        transform.scale = this.scale.copy();
+        transform.rotation = this.rotation;
+
+        return transform;
+    }
+
     @Override
     public String toString() {
         return "Transform{" +
