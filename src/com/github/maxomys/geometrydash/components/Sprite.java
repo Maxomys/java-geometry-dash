@@ -14,6 +14,9 @@ public class Sprite extends Component {
     public String pictureFile;
     public int width, height;
 
+    public boolean isSubSprite = false;
+    public int row, column, index;
+
     public Sprite(String pictureFile) {
         this.pictureFile = pictureFile;
 
@@ -38,6 +41,18 @@ public class Sprite extends Component {
         this.height = image.getHeight();
     }
 
+    public Sprite(BufferedImage image, int row, int column, int index) {
+        this.image = image;
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+
+        this.row = row;
+        this.column = column;
+        this.index = index;
+
+        this.isSubSprite = true;
+    }
+
     @Override
     public void draw(Graphics2D g2) {
         g2.drawImage(image, (int) gameObject.transform.position.x, (int) gameObject.transform.position.y, width, height, null);
@@ -45,7 +60,11 @@ public class Sprite extends Component {
 
     @Override
     public Component copy() {
-        return new Sprite(this.image);
+        if (!isSubSprite) {
+            return new Sprite(this.image);
+        } else {
+            return new Sprite(this.image, this.row, this.column, this.index);
+        }
     }
 
 }

@@ -19,6 +19,10 @@ public class GameObject {
         this.components = new ArrayList<>();
     }
 
+    public List<Component> getAllComponents() {
+        return this.components;
+    }
+
     public <T extends Component> T getComponent(Class<T> componentClass) {
         for (Component c : components) {
             if (componentClass.isAssignableFrom(c.getClass())) {

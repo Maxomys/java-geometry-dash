@@ -3,6 +3,7 @@ package com.github.maxomys.geometrydash.components;
 import com.github.maxomys.geometrydash.jade.Component;
 import com.github.maxomys.geometrydash.jade.GameObject;
 import com.github.maxomys.geometrydash.jade.Window;
+import com.github.maxomys.geometrydash.util.Constants;
 import com.github.maxomys.geometrydash.util.Vector2;
 
 import java.awt.*;
@@ -33,7 +34,7 @@ public class SnapToGrid extends Component {
             this.gameObject.transform.position.x = x * gridWidth - Window.getInstance().getCurrentScene().camera.position.x;
             this.gameObject.transform.position.y = y * gridHeight - Window.getInstance().getCurrentScene().camera.position.y;
 
-            if (Window.getInstance().mouseListener.mousePressed &&
+            if (Window.getInstance().mouseListener.y < Constants.BUTTON_OFFSET_Y && Window.getInstance().mouseListener.mousePressed &&
                     Window.getInstance().mouseListener.mouseButton == MouseEvent.BUTTON1 && debounceLeft < 0) {
 
                 debounceLeft = debounceTime;
