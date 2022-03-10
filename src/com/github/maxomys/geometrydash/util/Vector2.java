@@ -1,6 +1,8 @@
 package com.github.maxomys.geometrydash.util;
 
-public class Vector2 {
+import com.github.maxomys.geometrydash.file.Serialize;
+
+public class Vector2 extends Serialize {
 
     public float x, y;
 
@@ -24,6 +26,16 @@ public class Vector2 {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    @Override
+    public String serialize(int tabSize) {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(addFloatProperty("x", x, tabSize, true, true));
+        builder.append(addFloatProperty("y", y, tabSize, true, true));
+
+        return builder.toString();
     }
 
 }

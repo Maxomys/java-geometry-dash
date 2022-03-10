@@ -1,8 +1,10 @@
 package com.github.maxomys.geometrydash.jade;
 
+import com.github.maxomys.geometrydash.file.Serialize;
+
 import java.awt.Graphics2D;
 
-public abstract class Component {
+public abstract class Component extends Serialize {
 
     public GameObject gameObject;
 
@@ -19,5 +21,8 @@ public abstract class Component {
     }
 
     public abstract Component copy();
+
+    @Override
+    public abstract String serialize(int tabSize);
 
 }

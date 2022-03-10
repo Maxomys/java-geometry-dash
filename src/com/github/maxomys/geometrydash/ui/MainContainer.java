@@ -2,6 +2,7 @@ package com.github.maxomys.geometrydash.ui;
 
 import com.github.maxomys.geometrydash.components.Sprite;
 import com.github.maxomys.geometrydash.components.Spritesheet;
+import com.github.maxomys.geometrydash.dataStructure.AssetPool;
 import com.github.maxomys.geometrydash.dataStructure.Transform;
 import com.github.maxomys.geometrydash.jade.Component;
 import com.github.maxomys.geometrydash.jade.GameObject;
@@ -22,8 +23,8 @@ public class MainContainer extends Component {
     }
 
     private void init() {
-        Spritesheet groundSprites = new Spritesheet("assets/spritesheet.png", 42, 42, 2, 6, 12);
-        Spritesheet buttonSprites = new Spritesheet("assets/ui/buttonSprites.png", 60, 60, 2, 2, 2);
+        Spritesheet groundSprites = AssetPool.getSpritesheet("assets/spritesheet.png");
+        Spritesheet buttonSprites = AssetPool.getSpritesheet("assets/ui/buttonSprites.png");
 
         for (int i = 0; i < groundSprites.sprites.size(); i++) {
             Sprite currentSprite = groundSprites.sprites.get(i);
@@ -64,6 +65,11 @@ public class MainContainer extends Component {
     @Override
     public Component copy() {
         return null;
+    }
+
+    @Override
+    public String serialize(int tabSize) {
+        return "";
     }
 
 }

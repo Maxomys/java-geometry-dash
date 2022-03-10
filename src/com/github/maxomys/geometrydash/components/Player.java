@@ -58,4 +58,9 @@ public class Player extends Component {
         return null;
     }
 
+    @Override
+    public String serialize(int tabSize) {
+        return "";
+    }
+
 }

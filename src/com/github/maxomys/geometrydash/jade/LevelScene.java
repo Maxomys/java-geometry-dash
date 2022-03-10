@@ -1,6 +1,7 @@
 package com.github.maxomys.geometrydash.jade;
 
 import com.github.maxomys.geometrydash.components.*;
+import com.github.maxomys.geometrydash.dataStructure.AssetPool;
 import com.github.maxomys.geometrydash.dataStructure.Transform;
 import com.github.maxomys.geometrydash.util.Constants;
 import com.github.maxomys.geometrydash.util.Vector2;
@@ -17,10 +18,12 @@ public class LevelScene extends Scene {
 
     @Override
     public void init() {
+        initAssetPool();
+
         playerGO = new GameObject("Test object", new Transform(new Vector2(550.0f, 400.0f)));
-        Spritesheet layerOne = new Spritesheet("assets/player/layerOne.png", 42, 42, 2, 13, 13 * 5);
-        Spritesheet layerTwo = new Spritesheet("assets/player/layerTwo.png", 42, 42, 2, 13, 13 * 5);
-        Spritesheet layerThree = new Spritesheet("assets/player/layerThree.png", 42, 42, 2, 13, 13 * 5);
+        Spritesheet layerOne = AssetPool.getSpritesheet("assets/player/layerOne.png");
+        Spritesheet layerTwo = AssetPool.getSpritesheet("assets/player/layerTwo.png");
+        Spritesheet layerThree = AssetPool.getSpritesheet("assets/player/layerThree.png");
 
         Player playerComp = new Player(layerOne.sprites.get(0), layerTwo.sprites.get(0), layerThree.sprites.get(0), Color.RED, Color.BLUE);
         playerGO.addComponent(playerComp);
@@ -35,6 +38,13 @@ public class LevelScene extends Scene {
 
         renderer.submit(playerGO);
         renderer.submit(groundGO);
+    }
+
+    private void initAssetPool() {
+        AssetPool.addSpritesheet("assets/player/layerOne.png", 42, 42, 2, 13, 13 * 5);
+        AssetPool.addSpritesheet("assets/player/layerTwo.png", 42, 42, 2, 13, 13 * 5);
+        AssetPool.addSpritesheet("assets/player/layerThree.png", 42, 42, 2, 13, 13 * 5);
+        AssetPool.addSpritesheet("assets/spritesheet.png", 42, 42, 2, 6, 12);
     }
 
     @Override
